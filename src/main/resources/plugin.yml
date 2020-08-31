@@ -1,0 +1,5 @@
+name: Tutorial
+main: com.flaming.tutorial.MagmaCore
+version: "1.0.0"
+api: ["1.0.0"]
+author: FlamingKnight08

@@ -1,0 +1,5 @@
+com\flaming\tutorial\tasks\Announcements.class
+com\flaming\tutorial\events\JoinActions.class
+com\flaming\tutorial\MagmaCore.class
+com\flaming\tutorial\command\FirstCommand.class
+com\flaming\tutorial\events\BlockBreakActions.class
