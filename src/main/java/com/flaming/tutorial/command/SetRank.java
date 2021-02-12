@@ -3,6 +3,8 @@ package com.flaming.tutorial.command;
 import cn.nukkit.Player;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
+import cn.nukkit.command.data.CommandParamType;
+import cn.nukkit.command.data.CommandParameter;
 import com.flaming.tutorial.MagmaCore;
 import com.flaming.tutorial.ranks.PlayerRank;
 
@@ -10,6 +12,15 @@ public class SetRank extends Command {
 
     public SetRank() {
         super("setrank");
+        commandParameters.clear();
+        commandParameters.put("default", new CommandParameter[]{
+                CommandParameter.newType("player", CommandParamType.TARGET),
+                CommandParameter.newType("rank", CommandParamType.STRING)
+        });
+        commandParameters.put("byString", new CommandParameter[]{
+                CommandParameter.newType("player", CommandParamType.TARGET),
+                CommandParameter.newEnum("rank", MagmaCore.getPlugin().getRankIDs())
+        });
     }
 
     @Override

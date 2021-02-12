@@ -41,6 +41,14 @@ public class MagmaCore extends PluginBase {
         registerTasks();
     }
 
+    public String[] getRankIDs() {
+        String[] ranks = new String[playerRanks.size()];
+        for(int i = 0; i < playerRanks.size(); i++) {
+            ranks[i] = playerRanks.get(i).getRankID();
+        }
+        return ranks;
+    }
+
     public static MagmaCore getPlugin() {
         return plugin;
     }
