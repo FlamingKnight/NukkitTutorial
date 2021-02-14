@@ -1,6 +1,8 @@
 com\flaming\tutorial\tasks\Announcements.class
 com\flaming\tutorial\command\FirstCommand.class
+com\flaming\tutorial\command\ParticleCommand.class
 com\flaming\tutorial\ranks\PlayerRank.class
+com\flaming\tutorial\events\ParticleAdderActions.class
 com\flaming\tutorial\events\JoinActions.class
 com\flaming\tutorial\MagmaCore.class
 com\flaming\tutorial\events\BlockBreakActions.class

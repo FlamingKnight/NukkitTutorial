@@ -1,16 +1,16 @@
 package com.flaming.tutorial;
 
-import cn.nukkit.Player;
 import cn.nukkit.command.SimpleCommandMap;
 import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.plugin.PluginManager;
-import cn.nukkit.utils.Hash;
 import cn.nukkit.utils.TextFormat;
 import com.flaming.tutorial.command.FirstCommand;
+import com.flaming.tutorial.command.ParticleCommand;
 import com.flaming.tutorial.command.SetRank;
 import com.flaming.tutorial.events.BlockBreakActions;
 import com.flaming.tutorial.events.ChatEvent;
 import com.flaming.tutorial.events.JoinActions;
+import com.flaming.tutorial.events.ParticleAdderActions;
 import com.flaming.tutorial.ranks.PlayerRank;
 import com.flaming.tutorial.tasks.Announcements;
 
@@ -57,6 +57,7 @@ public class MagmaCore extends PluginBase {
         SimpleCommandMap commandMap = getServer().getCommandMap();
         commandMap.register("push", new FirstCommand());
         commandMap.register("setrank", new SetRank());
+        commandMap.register("particle", new ParticleCommand());
     }
 
     private void registerEvents() {
@@ -64,6 +65,7 @@ public class MagmaCore extends PluginBase {
         pluginManager.registerEvents(new JoinActions(), this);
         pluginManager.registerEvents(new BlockBreakActions(), this);
         pluginManager.registerEvents(new ChatEvent(), this);
+        pluginManager.registerEvents(new ParticleAdderActions(), this);
     }
 
     private void registerTasks() {
