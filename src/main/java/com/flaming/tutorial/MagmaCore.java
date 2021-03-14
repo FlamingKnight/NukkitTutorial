@@ -1,6 +1,11 @@
 package com.flaming.tutorial;
 
+import cn.nukkit.block.BlockID;
 import cn.nukkit.command.SimpleCommandMap;
+import cn.nukkit.inventory.Inventory;
+import cn.nukkit.inventory.ShapedRecipe;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.ItemID;
 import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.plugin.PluginManager;
 import cn.nukkit.utils.TextFormat;
@@ -14,15 +19,28 @@ import com.flaming.tutorial.events.ParticleAdderActions;
 import com.flaming.tutorial.ranks.PlayerRank;
 import com.flaming.tutorial.tasks.Announcements;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.UUID;
+import java.util.*;
 
 public class MagmaCore extends PluginBase {
 
     public static MagmaCore plugin;
     public ArrayList<PlayerRank> playerRanks;
     public HashMap<UUID, PlayerRank> playerRanksHashmaps;
+
+    @Override
+    public void onLoad() {
+        Item item = Item.get(ItemID.APPLE);
+        item.setCustomName(TextFormat.AQUA + "Diamond Apple");
+        item.setLore("May not look like much", "But definitely helpful in battles!");
+
+        String[] shape = new String[]{"DDD", "DAD", "DDD"};
+        Map<Character, Item> map = new HashMap<>();
+        map.put('D', Item.get(BlockID.DIAMOND_BLOCK));
+        map.put('A', Item.get(ItemID.APPLE));
+
+        getServer().getCraftingManager().registerRecipe(new ShapedRecipe(item, shape, map, Collections.emptyList()));
+        getServer().getCraftingManager().rebuildPacket();
+    }
 
     @Override
     public void onEnable() {
