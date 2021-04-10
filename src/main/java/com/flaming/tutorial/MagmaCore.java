@@ -8,6 +8,7 @@ import cn.nukkit.item.Item;
 import cn.nukkit.item.ItemID;
 import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.plugin.PluginManager;
+import cn.nukkit.utils.Config;
 import cn.nukkit.utils.TextFormat;
 import com.flaming.tutorial.command.FirstCommand;
 import com.flaming.tutorial.command.ParticleCommand;
@@ -26,6 +27,7 @@ public class MagmaCore extends PluginBase {
     public static MagmaCore plugin;
     public ArrayList<PlayerRank> playerRanks;
     public HashMap<UUID, PlayerRank> playerRanksHashmaps;
+    public String welcomeMessage;
 
     @Override
     public void onLoad() {
@@ -57,6 +59,13 @@ public class MagmaCore extends PluginBase {
         registerCommands();
         registerEvents();
         registerTasks();
+
+        saveDefaultConfig();
+        if(getConfig().getString("WelcomeMessage").equals("")) {
+            getConfig().set("WelcomeMessage", "Welcome %s to the tutorial server!");
+            getConfig().save();
+        }
+        welcomeMessage = getConfig().getString("WelcomeMessage");
     }
 
     public String[] getRankIDs() {

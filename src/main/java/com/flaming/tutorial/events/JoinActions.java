@@ -14,6 +14,6 @@ public class JoinActions implements Listener {
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         MagmaCore.getPlugin().playerRanksHashmaps.putIfAbsent(player.getUniqueId(), MagmaCore.getPlugin().getRankFromID("member"));
-        event.setJoinMessage(TextFormat.GRAY + "Welcome to your tutorial server " + TextFormat.GREEN + player.getName() + TextFormat.GRAY + "!");
+        event.setJoinMessage(String.format(MagmaCore.getPlugin().welcomeMessage, event.getPlayer().getName()));
     }
 }
